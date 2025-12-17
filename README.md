@@ -1,5 +1,4 @@
 <h2>TensorFlow-FlexUNet-Image-Segmentation-Bijie-Landslide (2025/12/18)</h2>
-
 Toshiyuki Arai<br>
 Software Laboratory antillia.com<br>
 <br>
@@ -51,21 +50,18 @@ The dataset used here was derived from <br><br>
 <a href="http://gpcv.whu.edu.cn/data/Bijie_pages.html">
 <b>Bijie Landslide Dataset</b>
 </a>.
-
 <br><br>
-We create an open remote sensing landslide dataset called Bijie landslide dataset for developing automatic landslide detection methods. The dataset consists of satellite optical images, shapefiles of landslides’ boundaries and digital elevation models. All the images in this dataset, i.e. 770 landslide images (red points) and 2003 non-landslide images were cropped from the TripleSat satellite images captured from May to August 2018.
-
+We create an open remote sensing landslide dataset called Bijie landslide dataset for developing automatic landslide detection methods. The dataset consists of satellite optical images, shapefiles of landslides’ boundaries and digital elevation models. All the images in this dataset, i.e. 770 landslide images (red points) and 2003 non-landslide images were cropped 
+from the TripleSat satellite images captured from May to August 2018.
 <br><br>
 For the landslide instances, we provide the landslide images (*.png), the landslide shapefiles (mask files, *.png), 
 the corresponding DEM data (*.png) and each landslide’ boundary coordinates (polygon, *.txt). <br>
 For the non-landslide samples, the images and the corresponding DEM data were provided. <br>
 All the data was prepared with a careful three-fold inspection to ensure its reliability.<br><br>
-
  More details can be found in:<br>
  Ji, S., Yu, D., Shen, C., Li, W., & Xu, Q.<br>
 <b> Landslide detection from an open satellite imagery and digital elevation model dataset <br>
   using attention boosted convolutional neural networks. Landslides, 1-16, 2020.</b>
-
 <br><br>
 <b>License</b><br>
 Unknown
@@ -98,7 +94,6 @@ on the google drive, expand the downloaded, and put it under dataset folder to b
 As shown above, the number of images of train and valid datasets is not so large to use for a training set of our segmentation model.
 <br><br> 
 <h4>2.2 Bijie-Landslide Derivation</h4>
-
 The renamed folder structure of the original dataset is the following. <br>
 <pre>
 ./Bijie Landslide dataset
@@ -157,7 +152,6 @@ base_kernels   = (11,11)
 num_layers     = 8
 dropout_rate   = 0.04
 dilation       = (1,1)
-
 </pre>
 
 <b>Learning rate</b><br>
@@ -230,25 +224,19 @@ By using this callback, on every epoch_change, the inference procedure can be ca
 <b>Epoch_change_inference output at middlepoint (epoch 31,32,33)</b><br>
 <img src="./projects/TensorFlowFlexUNet/Bijie-Landslide/asset/epoch_change_infer_at_middlepoint.png" width="1024" height="auto"><br>
 <br>
-
 <b>Epoch_change_inference output at ending (epoch 64,65,66)</b><br>
 <img src="./projects/TensorFlowFlexUNet/Bijie-Landslide/asset/epoch_change_infer_at_end.png" width="1024" height="auto"><br>
 <br>
 
-
 In this experiment, the training process was stopped at epoch 66 by EarlyStoppingCallback.<br><br>
 <img src="./projects/TensorFlowFlexUNet/Bijie-Landslide/asset/train_console_output_at_epoch66.png" width="880" height="auto"><br>
 <br>
-
 <a href="./projects/TensorFlowFlexUNet/Bijie-Landslide/eval/train_metrics.csv">train_metrics.csv</a><br>
 <img src="./projects/TensorFlowFlexUNet/Bijie-Landslide/eval/train_metrics.png" width="520" height="auto"><br>
-
 <br>
 <a href="./projects/TensorFlowFlexUNet/Bijie-Landslide/eval/train_losses.csv">train_losses.csv</a><br>
 <img src="./projects/TensorFlowFlexUNet/Bijie-Landslide/eval/train_losses.png" width="520" height="auto"><br>
-
 <br>
-
 <h3>
 4 Evaluation
 </h3>
@@ -266,7 +254,6 @@ Evaluation console output:<br>
 <img src="./projects/TensorFlowFlexUNet/Bijie-Landslide/asset/evaluate_console_output_at_epoch66.png" width="880" height="auto">
 <br><br>Bijie-Landslide
 <a href="./projects/TensorFlowFlexUNet/Bijie-Landslide/evaluation.csv">evaluation.csv</a><br>
-
 The loss (categorical_crossentropy) to this Bijie-Landslide/test was low, and dice_coef_multiclass very high as shown below.
 <br>
 <pre>
@@ -291,10 +278,8 @@ python ../../../src/TensorFlowFlexUNetInferencer.py ./train_eval_infer.config
 <img src="./projects/TensorFlowFlexUNet/Bijie-Landslide/asset/mini_test_images.png" width="1024" height="auto"><br>
 <b>mini_test_mask(ground_truth)</b><br>
 <img src="./projects/TensorFlowFlexUNet/Bijie-Landslide/asset/mini_test_masks.png" width="1024" height="auto"><br>
-
 <hr>
 <b>Inferred test masks</b><br>
- 
 <img src="./projects/TensorFlowFlexUNet/Bijie-Landslide/asset/mini_test_output.png" width="1024" height="auto"><br>
 <br>
 <hr>
@@ -321,8 +306,6 @@ augmented dataset appear similar to the ground truth masks.<br>
 <td><img src="./projects/TensorFlowFlexUNet/Bijie-Landslide/mini_test/masks/10242.png" width="320" height="auto"></td>
 <td><img src="./projects/TensorFlowFlexUNet/Bijie-Landslide/mini_test_output/10242.png" width="320" height="auto"></td>
 </tr>
-
-
 <tr>
 <td><img src="./projects/TensorFlowFlexUNet/Bijie-Landslide/mini_test/images/10409.png" width="320" height="auto"></td>
 <td><img src="./projects/TensorFlowFlexUNet/Bijie-Landslide/mini_test/masks/10409.png" width="320" height="auto"></td>
@@ -341,7 +324,6 @@ augmented dataset appear similar to the ground truth masks.<br>
 </table>
 <hr>
 <br>
-
 <h3>
 References
 </h3>
@@ -352,7 +334,6 @@ Shunping Ji, Dawen Yu, Chaoyong Shen, Weile Li, Qiang Xu<br>
 <a href="https://sci-hub.ru/10.1007/s10346-020-01353-2">https://sci-hub.ru/10.1007/s10346-020-01353-2</a>
 <br>
 <br>
-
 <b>2. TensorFlow-FlexUNet-Image-Segmentation-Model</b><br>
 Toshiyuki Arai antillia.com <br>
 <a href="https://github.com/sarah-antillia/TensorFlow-FlexUNet-Image-Segmentation-Model">
@@ -379,6 +360,4 @@ Toshiyuki Arai antillia.com <br>
 <a href="https://github.com/atlan-antillia/TensorFlow-FlexUNet-Tiled-Image-Segmentation-Sichuan-Landslide">
 https://github.com/atlan-antillia/TensorFlow-FlexUNet-Tiled-Image-Segmentation-Sichuan-Landslide
 </a>
-
-
 
