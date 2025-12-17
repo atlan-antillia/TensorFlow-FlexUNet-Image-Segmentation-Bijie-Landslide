@@ -106,7 +106,7 @@ The renamed folder structure of the original dataset is the following. <br>
     ├─dem
     └─image
 </pre>
-We used the following 2 Python scripts to generate the Upscaled (>=512 pixcels) and Augmented Bijie Landslide dataset from 
+We used the following 2 Python scripts to generate the Upscaled, width and height >=512 pixcels, and Augmented Bijie Landslide dataset from 
  770 files in <b>image</b> and corresponding mask files in <b>mask</b> in <b>landslide</b> folder.<br>
 <ul>
 <li><a href="./generator/ImageMaskDatasetGenerator.py">ImageMaskDatasetGenerator.py</a></li>
